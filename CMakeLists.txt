@@ -1,6 +1,6 @@
 # Notice from Rowan Althorp in order to maintain Academic Integritiy
 
-# This CMakeLists.txt was created using guidance from a response by an AI language model, most sepectifically Google Gemini 2.0 Flash Experimental.
+# This CMakeLists.txt was created using guidance from a response by an AI language model, most specifically Google Gemini 2.0 Flash Experimental.
 # The specific configuration of build directories and cross-platform settings was based on
 # instructions provided by the AI, which it than used to make the program more crossplatform and accessible.
 #
@@ -9,8 +9,11 @@
 cmake_minimum_required(VERSION 3.10)
 project(dpg_game)
 
-# --- Configure Build Directories ---
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+# --- Configure Output Directories ---
+# Set the runtime output directory to the 'bin' folder at the project root
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
+
+# Set the library and archive output directories to 'lib' folder inside the build directory
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 
@@ -39,26 +42,12 @@ target_include_directories(dpg_game PUBLIC
 # --- Link Libraries ---
 target_link_libraries(dpg_game sfml-graphics sfml-window sfml-system)
 
-
-# --- Set Installation Paths ---
-# (Optional: If you plan to install the executable elsewhere)
-# This is useful if you want to package your game to be installed elsewhere
-
+# --- Install Target ---
+# This ensures the executable is copied to the 'bin' folder after building
 install(TARGETS dpg_game
     RUNTIME DESTINATION bin
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib
 )
 
-
-# --- Optional, but helpful.
-#  This defines that if you want to run the executable,
-#  its default working directory should be the build directory
-#  This ensures that assets and other game data can be accessed at the relative path
-set_property(TARGET dpg_game PROPERTY CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
-
-
-#  This defines that if you want to run the executable,
-#  its default working directory should be the build directory
-#  This ensures that assets and other game data can be accessed at the relative path
-set_property(TARGET dpg_game PROPERTY CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
+# --- Explanation of Changes and How to Build ---
+message(STATUS "Build will output the executable to the 'bin' folder in the project root.")
+message(STATUS "To build, create a 'build' directory, navigate into it, and run 'cmake ..' followed by 'cmake --build .'")
