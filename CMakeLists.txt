@@ -1,5 +1,4 @@
 # Notice from Rowan Althorp in order to maintain Academic Integritiy
-
 # This CMakeLists.txt was created using guidance from a response by an AI language model, most specifically Google Gemini 2.0 Flash Experimental.
 # The specific configuration of build directories and cross-platform settings was based on
 # instructions provided by the AI, which it than used to make the program more crossplatform and accessible.
@@ -38,7 +37,7 @@ set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
 # --- Create Executable ---
 add_executable(dpg_game ${SOURCE_DIR}/main.cpp)
 
-# --- Set Include Directories ---
+# --- Set Include Directories (for compilation) ---
 target_include_directories(dpg_game PUBLIC
     ${SFML_INCLUDE_DIRS}
     ${INCLUDE_DIR}
@@ -53,8 +52,35 @@ install(TARGETS dpg_game
     RUNTIME DESTINATION bin
 )
 
+# --- Copy Headers to Include Directory ---
+file(GLOB_RECURSE HEADER_FILES "${SOURCE_DIR}/*.h" "${SOURCE_DIR}/*.hpp")
+
+foreach(HEADER_FILE ${HEADER_FILES})
+    # Get the relative path from the source directory
+    string(REPLACE "${SOURCE_DIR}" "" HEADER_SUBPATH "${HEADER_FILE}")
+
+    # Construct the destination path in the include directory
+    set(DESTINATION_PATH "${CMAKE_BINARY_DIR}/include/${HEADER_SUBPATH}")
+
+    # Get the destination directory
+    get_filename_component(DESTINATION_DIR "${DESTINATION_PATH}" DIRECTORY)
+
+    # Create the destination directory if it doesn't exist
+    file(MAKE_DIRECTORY "${DESTINATION_DIR}")
+
+    # Copy the header file
+    file(COPY "${HEADER_FILE}" DESTINATION "${DESTINATION_DIR}")
+endforeach()
+
+# --- Set Include Directories (for usage of copied headers) ---
+# This makes the copied headers available to other projects that might use this one
+target_include_directories(dpg_game PUBLIC
+    "${CMAKE_BINARY_DIR}/include"
+)
+
 # --- Explanation of Changes and How to Build ---
 message(STATUS "Build will output the executable to the 'bin' folder in the project root.")
+message(STATUS "The .h and .hpp files from 'src' will be copied to the 'include' folder in the build directory.")
 message(STATUS "To build, create a 'build' directory, navigate into it, and run 'cmake ..' followed by 'cmake --build .'")
 # --- Cross-Platform Build Instructions ---
 message(STATUS "Build will output the executable to the 'bin' folder in the build directory.")
