@@ -21,7 +21,12 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 find_package(SFML REQUIRED COMPONENTS graphics window system)
 
 if (NOT SFML_FOUND)
-    message(FATAL_ERROR "SFML not found, please install SFML or specify SFML_DIR")
+    message(FATAL_ERROR "SFML not found, please install SFML or specify SFML_DIR or CMAKE_PREFIX_PATH.")
+    message(STATUS "On Debian/Ubuntu-based systems, try: sudo apt-get install libsfml-dev")
+    message(STATUS "On Fedora/CentOS/RHEL-based systems, try: sudo dnf install SFML-devel")
+    message(STATUS "On macOS using Homebrew, try: brew install sfml")
+    message(STATUS "Alternatively, you can download SFML from the official website and")
+    message(STATUS "set the SFML_DIR CMake variable to the SFML installation directory.")
 else()
     message(STATUS "Found SFML: ${SFML_INCLUDE_DIRS}, ${SFML_LIBRARIES}")
 endif()
@@ -40,7 +45,7 @@ target_include_directories(dpg_game PUBLIC
 )
 
 # --- Link Libraries ---
-target_link_libraries(dpg_game sfml-graphics sfml-window sfml-system)
+target_link_libraries(dpg_game ${SFML_LIBRARIES})
 
 # --- Install Target ---
 # This ensures the executable is copied to the 'bin' folder after building
@@ -51,3 +56,14 @@ install(TARGETS dpg_game
 # --- Explanation of Changes and How to Build ---
 message(STATUS "Build will output the executable to the 'bin' folder in the project root.")
 message(STATUS "To build, create a 'build' directory, navigate into it, and run 'cmake ..' followed by 'cmake --build .'")
+# --- Cross-Platform Build Instructions ---
+message(STATUS "Build will output the executable to the 'bin' folder in the build directory.")
+message(STATUS "To build:")
+message(STATUS "  1. Create a 'build' directory in the project root: mkdir build")
+message(STATUS "  2. Navigate into the 'build' directory: cd build")
+message(STATUS "  3. Run CMake to configure the project: cmake ..")
+message(STATUS "  4. Run the appropriate build command for your system:")
+message(STATUS "     - On most systems: cmake --build .")
+message(STATUS "     - On Linux/macOS with Makefiles: make")
+message(STATUS "     - On Windows with MinGW: mingw32-make")
+message(STATUS "     - On Windows with NMake (Visual Studio): nmake")

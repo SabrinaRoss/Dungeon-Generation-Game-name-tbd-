@@ -14,6 +14,9 @@
 </div>
 <h3 align='center'> Gameplay </h3>
 <h3 align='center'> Map </h3>
+<div style="text-align: center;"> 
+	<a href="./Map/Design">Design</a><br> 
+</div>
 <h3 align='center'> Visuals </h3>
 
 
