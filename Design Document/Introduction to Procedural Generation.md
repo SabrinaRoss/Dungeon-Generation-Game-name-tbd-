@@ -9,6 +9,7 @@
 <h2 align='center'> This design document is divided into multiple sections </h2>
 <h3 align='center'> Coding </h3>
 <div style="text-align: center;"> 
+	<a href="./Coding/Technical-Tools">Technical Tools</a><br> 
 	<a href="./Coding/Procedural-Generation-Algorithms.md">Procedural Generation Algorithms</a> 
 </div>
 <h3 align='center'> Gameplay </h3>
