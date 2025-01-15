@@ -10,7 +10,7 @@
 
 <h2> This design document is divided into multiple sections </h2>
 <h3> Coding </h3>
-- [Procedural Generation Algorithms](Coding/Procedural-Generation-Algorithms.md)
+- <a href="./Coding/Procedural-Generation-Algorithms.md">Procedural Generation Algorithms</a> 
 <h3> Gameplay </h3>
 <h3> Map </h3>
 <h3> Visuals </h3>
