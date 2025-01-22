@@ -4,6 +4,6 @@ This document is designed as a means to assist the developer for the order in wh
 
 <br>
 This is the initial project outline I was given.
-![[initial_project_structure.png]]
+![Project Course Outline](Source_Images/initial_project_structure.png)
 
 
