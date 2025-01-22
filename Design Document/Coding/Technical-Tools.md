@@ -5,3 +5,5 @@
 	- Graphics and Rendering
 	- Input
 	- Audio (stretch goal)
+- CMake
+- Valgrind
