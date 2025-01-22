@@ -4,6 +4,12 @@ This document is designed as a means to assist the developer for the order in wh
 
 <br>
 This is the initial project outline I was given.
-![Project Course Outline](Source_Images/initial_project_structure.png)
+
+<body>
+    <h1>Project Course Outline</h1>
+    <img src="Source_Images/initial_project_structure.png" alt="Project Course Outline">
+</body>
+
+
 
 
