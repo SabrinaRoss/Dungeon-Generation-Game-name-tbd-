@@ -76,6 +76,13 @@ This directory contains the source code files (.cpp) and their corresponding hea
     * Header Files:
         * `random.h`
         * `logger.h`
+- UI/
+	- Source Files:
+		- `main_menu.cpp`
+		- `losing_screen.cpp`
+	- Header Files:
+		- `main_menu.h`
+		- `losing_screen.h`
 
 * `main.cpp`
 
@@ -89,6 +96,7 @@ This directory contains the public header files (.h / .hpp) that define the inte
 * **graphics/**
 * **input/**
 * **utils/**
+* **UI**
 
 ## assets/
 
