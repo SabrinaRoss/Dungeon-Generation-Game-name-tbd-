@@ -16,11 +16,11 @@ This document is designed as a means to assist the developer for the order in wh
 *   **Tasks:**
     *   **Game Scope Definition:**
         *   [x] Define the core gameplay loop.
-        *   Determine the number of dungeon levels and the level of complexity.
+        *   [x] Determine the number of dungeon levels and the level of complexity.
         *   Establish what elements (characters, items, enemies) will exist in the world
     *   **Game Mechanics Specification:**
-        *   Define the rules of the game, including movement, combat.
-        *   Determine how the player will interact with the game world
+        *   [x] Define the rules of the game, including movement, combat.
+        *    Determine how the player will interact with the game world
     *   **Dungeon Generation Algorithm Selection:**
         *   [x] Research and choose the dungeon generation algorithm (random walk, cellular automata, or similar).  
         *   [x] Plan how the algorithm will be implemented within the game. 
