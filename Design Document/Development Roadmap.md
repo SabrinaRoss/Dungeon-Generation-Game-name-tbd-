@@ -23,7 +23,7 @@ This document is designed as a means to assist the developer for the order in wh
         *   Determine how the player will interact with the game world
     *   **Dungeon Generation Algorithm Selection:**
         *   [x] Research and choose the dungeon generation algorithm (random walk, cellular automata, or similar).  
-        *   Plan how the algorithm will be implemented within the game. 
+        *   [x] Plan how the algorithm will be implemented within the game. 
     *   **Mockup Creation:**
         *   Create basic mockups (using graph paper, or other simple method) showing the appearance of the game, especially basic tiles and the UI.
         *   Design for user interaction.

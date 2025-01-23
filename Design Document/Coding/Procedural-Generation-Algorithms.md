@@ -1,4 +1,5 @@
 
+# Dungeon Generation
 For this project, I am going to decide between three main algorithms.
 
 ## 1. Random Walk
@@ -99,7 +100,22 @@ The grid is split into smaller and smaller sections (hence binary partition), an
 
 ## Conclusion
 
-Considering these 3 common procedural generation algorithms, it has been decided that the program will use a combination of **Random Walk** and **Cellular Automata**.
+Considering these 3 common procedural generation algorithms, it has been decided that the program will use a combination of Binary Search Partition
 
-- **Random Walk** will be used for any corridor-like structure.
-- **Cellular Automata** will be used for more complex rooms.
+- **Binary Search Partition** 
+	- Considering the gameloop, making fine control over the rooms, makes it so that the core gameplay (of minesweeper) look is not compromised by wonky generations of the room.
+	- More predictable makes debuging easier and reduces change of softlocks for a map based puzzle which can easily be compromised when generating.
+-  (Stretch Goal) Cellular Automata:
+	- This can be used to decorate rooms, in a unique way.
+
+
+# Minesweeper 
+
+This a code example for generating a random minesweeper board,
+adapted from [Creating Minesweeper](https://www.geeksforgeeks.org/cpp-implementation-minesweeper-game/) and Gemini 2.0 Flash Thinking Experimental
+```cpp
+#include <vector>
+#include <random>
+
+}
+```

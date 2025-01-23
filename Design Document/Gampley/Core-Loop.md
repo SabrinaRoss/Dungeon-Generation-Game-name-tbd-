@@ -45,3 +45,6 @@ I chose to center my game around Minesweeper.
 *   **Roguelike and Procedural Generation:** The game will be a roguelike with procedurally generated dungeons and puzzles. This will maximise replayability and align with the desire to explore procedural generation techniques.
 *   **Adapted Puzzle Mechanic: Minesweeper:**  Combat encounters will be based on Minesweeper puzzles. Minesweeper was chosen for its inherent puzzle structure, clear win/loss conditions, scalability in difficulty, and relative ease of implementation.  This approach leverages a pre-existing, well-understood game mechanic to create a novel roguelike experience.
 *   **Core Gameplay Loop:** The core gameplay loop will revolve around entering a room, encountering procedural generated Minesweeper puzzles, and interacting with them. Successfully solving puzzles will deal damage to enemies, while failing puzzles will result in the player taking damage.  This loop will be the foundation of the game's moment-to-moment gameplay.
+
+
+**Update:** Thinking about a design choice that, requires the map being generated first, and than the placement of the minesweeper is dependant on the room, and if the minesweeper is placed next to a wall the wall is counting in the puzzle etc.
