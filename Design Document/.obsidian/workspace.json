@@ -140,12 +140,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Development Roadmap.md",
+                "file": "Gampley/Core-Loop.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Development Roadmap"
+              "title": "Core-Loop"
             }
           },
           {
@@ -327,21 +327,21 @@
   },
   "active": "1a011ee4f2656779",
   "lastOpenFiles": [
-    "Gampley/Core-Loop.md",
+    "Source_Images/initial_project_structure.png",
     "Development Roadmap.md",
-    "Gampley/Planning.md",
     "Introduction to Procedural Generation.md",
     "Structure.md",
-    "Map/Design.md",
     "Coding/Technical-Tools.md",
-    "Gampley",
     "Coding/Procedural-Generation-Algorithms.md",
-    "Source_Images/initial_project_structure.png",
+    "Gampley/Core-Loop.md",
+    "Coding/Introduction to Procedural Generation.md",
+    "Gampley/Planning.md",
+    "Map/Design.md",
+    "Gampley",
     "Source_Images",
     "Design",
     "Map/Desgin.md",
     "Visuals/placeholder.md",
-    "Coding/Introduction to Procedural Generation.md",
     "Visuals",
     "Coding/Procedural Generation Algorithms.md",
     "Coding/Procedural.md",

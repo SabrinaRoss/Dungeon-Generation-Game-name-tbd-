@@ -22,6 +22,9 @@ ee<h5>CSC 299 – Undergraduate Directed Project</h5>
 	<a href="./Coding/Procedural-Generation-Algorithms.md">Procedural Generation Algorithms</a> 
 </div>
 <h3 align='center'> Gameplay </h3>
+<div style="text-align: center;"> 
+	<a href="./Gameplay/Core-Loop.md">Gameplay Loop</a><br>
+</div>
 <h3 align='center'> Map </h3>
 <div style="text-align: center;"> 
 	<a href="./Map/Design">Design</a><br> 
