@@ -140,12 +140,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Development Roadmap.md",
+                "file": "Introduction to Procedural Generation.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Development Roadmap"
+              "title": "Introduction to Procedural Generation"
             }
           },
           {
@@ -327,12 +327,12 @@
   },
   "active": "1a011ee4f2656779",
   "lastOpenFiles": [
+    "Development Roadmap.md",
     "Structure.md",
     "Introduction to Procedural Generation.md",
     "Coding/Procedural-Generation-Algorithms.md",
     "Coding/Technical-Tools.md",
     "Gampley/Core-Loop.md",
-    "Development Roadmap.md",
     "Source_Images/initial_project_structure.png",
     "Coding/Introduction to Procedural Generation.md",
     "Gampley/Planning.md",

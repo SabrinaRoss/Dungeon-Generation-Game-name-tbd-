@@ -1,4 +1,4 @@
-ee<h5>CSC 299 – Undergraduate Directed Project</h5>
+<h5>CSC 299 – Undergraduate Directed Project</h5>
 
 - **Status:** In Progress
 - **Contributor:** Rowan Althorp
@@ -9,11 +9,11 @@ ee<h5>CSC 299 – Undergraduate Directed Project</h5>
 <h2 align='center'> This design document is divided into multiple sections </h2>
 <div style="text-align: center;"> 
 	<a href=".Structure.md">Project Structure</a><br>
-	<a href=".Development Roadmap.md">Development Roadmap</a> 
+	<a href=".Development-Roadmap.md">Development Roadmap</a> 
 </div>
 <h3 align='center'> Coding </h3>
 <div style="text-align: center;"> 
-	<a href="./Coding/Technical-Tools">Technical Tools</a><br>
+	<a href="./Coding/Technical-Tools.md">Technical Tools</a><br>
 	<a href="./Coding/Procedural-Generation-Algorithms.md">Procedural Generation Algorithms</a> 
 </div>
 <h3 align='center'> Coding </h3>
@@ -27,7 +27,7 @@ ee<h5>CSC 299 – Undergraduate Directed Project</h5>
 </div>
 <h3 align='center'> Map </h3>
 <div style="text-align: center;"> 
-	<a href="./Map/Design">Design</a><br> 
+	<a href="./Map/Design.md">Design</a><br> 
 </div>
 <h3 align='center'> Visuals </h3>
 
