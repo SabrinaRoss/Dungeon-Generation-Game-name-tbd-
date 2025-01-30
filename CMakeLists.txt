@@ -18,7 +18,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 
 # --- Find SFML ---
 find_package(SFML REQUIRED COMPONENTS graphics window system)
-
+message(STATUS "SFML_LIBRARIES: ${SFML_LIBRARIES}")
 if (NOT SFML_FOUND)
     message(FATAL_ERROR "SFML not found, please install SFML or specify SFML_DIR or CMAKE_PREFIX_PATH.")
     message(STATUS "On Debian/Ubuntu-based systems, try: sudo apt-get install libsfml-dev")
@@ -44,8 +44,11 @@ target_include_directories(dpg_game PUBLIC
 )
 
 # --- Link Libraries ---
-target_link_libraries(dpg_game ${SFML_LIBRARIES})
-
+target_link_libraries(dpg_game
+    sfml-graphics
+    sfml-window
+    sfml-system
+)
 # --- Install Target ---
 # This ensures the executable is copied to the 'bin' folder after building
 install(TARGETS dpg_game
