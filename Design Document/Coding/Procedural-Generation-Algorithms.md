@@ -95,7 +95,130 @@ The grid is split into smaller and smaller sections (hence binary partition), an
 
 ### Cons:
 - This reliability makes the generations predictable.
+### Example of a Simple BSP code (completely adopted from DeepSeek )
+```cpp
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <vector>
 
+using namespace std;
+
+struct Rect {
+    int x, y, w, h;
+    Rect(int x = 0, int y = 0, int w = 0, int h = 0) 
+        : x(x), y(y), w(w), h(h) {}
+};
+
+class BSPNode {
+    Rect area;
+    BSPNode* left;
+    BSPNode* right;
+    Rect room;
+    
+public:
+    BSPNode(int x, int y, int w, int h)
+        : area(x, y, w, h), left(nullptr), right(nullptr) {}
+
+    ~BSPNode() {
+        delete left;
+        delete right;
+    }
+
+    bool isLeaf() const { return !left && !right; }
+
+    void split(int minSize) {
+        if (!isLeaf()) return;
+
+        // Choose split direction (prefer wider/narrower splits)
+        bool splitH = rand() % 2;
+        if (area.w > area.h * 1.25) splitH = false;
+        else if (area.h > area.w * 1.25) splitH = true;
+
+        int max = (splitH ? area.h : area.w) - minSize;
+        if (max <= minSize) return; // Too small to split
+
+        int split = rand() % (max - minSize) + minSize;
+
+        if (splitH) {
+            left = new BSPNode(area.x, area.y, 
+                             area.w, split);
+            right = new BSPNode(area.x, area.y + split, 
+                              area.w, area.h - split);
+        } else {
+            left = new BSPNode(area.x, area.y, 
+                             split, area.h);
+            right = new BSPNode(area.x + split, area.y, 
+                              area.w - split, area.h);
+        }
+
+        // Recursively split children
+        left->split(minSize);
+        right->split(minSize);
+    }
+
+    void generateRooms(int minRoomSize) {
+        if (isLeaf()) {
+            // Create random room within partition
+            int roomW = minRoomSize + rand() % (area.w - minRoomSize);
+            int roomH = minRoomSize + rand() % (area.h - minRoomSize);
+            int roomX = area.x + rand() % (area.w - roomW);
+            int roomY = area.y + rand() % (area.h - roomH);
+            room = Rect(roomX, roomY, roomW, roomH);
+        } else {
+            // Process children first
+            left->generateRooms(minRoomSize);
+            right->generateRooms(minRoomSize);
+            
+            // Connect children's rooms
+            connectRooms(left->getRoom(), right->getRoom());
+        }
+    }
+
+    Rect getRoom() const {
+        if (isLeaf()) return room;
+        
+        // Return combined area for corridors
+        return Rect(area.x, area.y, area.w, area.h);
+    }
+
+private:
+    void connectRooms(const Rect& r1, const Rect& r2) {
+        // Connect room centers with L-shaped corridor
+        int x1 = r1.x + r1.w/2;
+        int y1 = r1.y + r1.h/2;
+        int x2 = r2.x + r2.w/2;
+        int y2 = r2.y + r2.h/2;
+
+        // 50% chance for horizontal-vertical vs vertical-horizontal
+        if (rand() % 2) {
+            // Horizontal then vertical
+            cout << "Corridor: (" << x1 << "," << y1 << ") -> ("
+                 << x2 << "," << y1 << ") -> (" << x2 << "," << y2 << ")\n";
+        } else {
+            // Vertical then horizontal
+            cout << "Corridor: (" << x1 << "," << y1 << ") -> ("
+                 << x1 << "," << y2 << ") -> (" << x2 << "," << y2 << ")\n";
+        }
+    }
+};
+
+int main() {
+    srand(time(nullptr));
+
+    const int MAP_WIDTH = 50;
+    const int MAP_HEIGHT = 40;
+    const int MIN_SIZE = 6;
+
+    BSPNode root(0, 0, MAP_WIDTH, MAP_HEIGHT);
+    root.split(MIN_SIZE);
+    
+    cout << "Generated dungeon structure:\n";
+    root.generateRooms(MIN_SIZE);
+
+    return 0;
+}
+```
 ---
 
 ## Conclusion

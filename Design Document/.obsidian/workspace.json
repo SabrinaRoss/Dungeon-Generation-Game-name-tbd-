@@ -154,12 +154,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Coding/Procedural-Generation-Algorithms.md",
+                "file": "Introduction to Procedural Generation.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Procedural-Generation-Algorithms"
+              "title": "Introduction to Procedural Generation"
             }
           },
           {
@@ -341,15 +341,15 @@
   },
   "active": "641c5ffcfd248ead",
   "lastOpenFiles": [
+    "Source_Images/initial_project_structure.png",
+    "Coding/Procedural-Generation-Algorithms.md",
     "Development Roadmap.md",
     "Structure.md",
     "Introduction to Procedural Generation.md",
-    "Coding/Procedural-Generation-Algorithms.md",
     "Coding/Technical-Tools.md",
     "Gampley/Core-Loop.md",
     "Gampley/Difficulty and Scaling.md",
     "Map/Design.md",
-    "Source_Images/initial_project_structure.png",
     "Coding/Introduction to Procedural Generation.md",
     "Gampley/Planning.md",
     "Gampley",
