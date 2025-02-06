@@ -17,8 +17,8 @@ public:
     void setTextColour(sf::Color colour) {button.setFillColor(colour);}
     void setPosition(sf::Vector2f pos) {
         button.setPosition(pos);
-        float x_pos = (pos.x + button.getGlobalBounds().width / 2) - (text.getGlobalBounds().width / 2) -5;
-        float y_pos = (pos.y + button.getGlobalBounds().height / 2) - (text.getGlobalBounds().height / 2) -5;
+        float x_pos = (pos.x + button.getGlobalBounds().width / 2) - (text.getGlobalBounds().width / 2) -25;
+        float y_pos = (pos.y + button.getGlobalBounds().height / 2) - (text.getGlobalBounds().height / 2) -10;
         text.setPosition({x_pos, y_pos});
     }
     void drawTo(sf::RenderWindow &window) {
