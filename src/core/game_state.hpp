@@ -1,8 +1,10 @@
 #ifndef GAME_STATE
 #define GAME_STATE
 
-class GameState {
-
+enum GameState {
+    START,
+    PLAYING,
+    LOSE
 };
 
 #endif 

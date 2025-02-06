@@ -2,6 +2,7 @@
 #include <iostream>
 #include <filesystem>
 #include "ui/main_menu.hpp"
+#include "core/game_state.hpp"
 
 
 int main() {
@@ -28,8 +29,9 @@ int main() {
     // textbox1.setPosition({100,100});
     // textbox1.setLimit(true, 10);
     
-    //init button here or something like that
+    GameState game_state = GameState::START;
     MainMenu main_menu(window, font);
+    
     while (window.isOpen()) {
         sf::Event event;
         // if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) textbox1.setSelected(true);
@@ -37,8 +39,13 @@ int main() {
 
         //move this to the main_menu screen with a referance to window
         window.clear();
-        main_menu.eventChecking(event, window);
-
+        switch (game_state) {
+        case GameState::START:
+            main_menu.eventChecking(event, window, game_state);
+            break;
+        case GameState::PLAYING:
+            break;
+        }
         //textbox1.drawTo(window);
         window.display();
     }

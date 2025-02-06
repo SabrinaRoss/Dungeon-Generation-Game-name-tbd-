@@ -41,6 +41,7 @@ add_executable(dpg_game ${SOURCE_DIR}/main.cpp)
 target_include_directories(dpg_game PUBLIC
     ${SFML_INCLUDE_DIRS}
     ${INCLUDE_DIR}
+    $(SOURCE_DIR)
 )
 
 # --- Link Libraries ---

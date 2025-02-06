@@ -31,7 +31,10 @@ public:
         if (button.getGlobalBounds().contains(mx, my)) return true;
         else return false;
     }
+    void setName(std::string n) { name = n; }
+    std::string getName() { return name; }
 private:
     sf::RectangleShape button;
     sf::Text text;
+    std::string name;
 };

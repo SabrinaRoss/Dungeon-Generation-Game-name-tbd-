@@ -3,6 +3,7 @@
 #include <vector>
 #include "textbox.hpp"
 #include "button.hpp"
+#include "core/game_state.hpp"
 
 class MainMenu {
 public:
@@ -14,7 +15,7 @@ public:
         createButton("Quit", {200, 50}, default_colour, w);
     }
     void setColour(sf::Color colour) { default_colour = colour;}
-    void eventChecking(sf::Event &event, sf::RenderWindow &window) {
+    void eventChecking(sf::Event &event, sf::RenderWindow &window, GameState &game_state) {
         while (window.pollEvent(event)) {
             switch(event.type) {
             // case sf::Event::TextEntered:
@@ -28,7 +29,10 @@ public:
                     break;
                 case sf::Event::MouseButtonPressed:
                     for (auto &btn: buttons) {
-                        if (btn.isMouseOver(window)) std::cout << "placeholder" <<std::endl;
+                        if (btn.isMouseOver(window)) {
+                            if (btn.getName() == "Start Game") { std::cout << "Start Game" <<std::endl; game_state = GameState::PLAYING; }
+                            else if (btn.getName() == "Quit") { std::cout << "Quit" <<std::endl; window.close(); } 
+                        }
                     }
                     break;
                 case sf::Event::Closed:
@@ -47,6 +51,7 @@ private:
         Button btn(s, size, 15, colour, sf::Color::Black);
         btn.setPosition({windowSize.x / 2.f - size.x + 80, windowSize.y / 2.f + buttons.size() * 60.f});
         btn.setFont(font);
+        btn.setName(s); // this is a really scuffed solution
         buttons.push_back(btn);
     }
 };
