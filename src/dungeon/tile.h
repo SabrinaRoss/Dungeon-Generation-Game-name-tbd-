@@ -1,5 +1,5 @@
-#ifndef TILE
-#define TILE
+#ifndef TILE_H
+#define TILE_H
 #include <SFML/Graphics.hpp>
 
 enum TileType {
@@ -11,7 +11,6 @@ enum TileType {
 class Tile {
 public:
     Tile(int x, int y, TileType type = TileType::VOID);
-
     int getX() const;
     int getY() const;
     TileType getType() const;
