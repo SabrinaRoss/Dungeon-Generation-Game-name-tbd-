@@ -22,16 +22,16 @@ public:
     bool isWalkable() const;
     bool isVisible() const;
     bool isExplored() const;
-    void setSprite() const;
-    void draw_to(sf::RenderWindow& window);
+    void setSprite(std::filesystem::path& filepath);
+    void drawTo(sf::RenderWindow& window);
 private:
     int x;
     int y;
     TileType tile_type;
     bool walkable;
     bool visible; // is the tile showing up
-    bool expored; 
+    bool explored; 
     sf::Sprite sprite;
-}
+};
 
 #endif
