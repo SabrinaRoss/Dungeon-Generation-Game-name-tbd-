@@ -9,8 +9,10 @@ Title::tile(int x, int y, TileType tile_type)
         case TileType::GROUND:
             walkable = true;
             break;
-        case TileType:::WALL
+        case TileType:::WALL:
             break; // for safety
+        case TileType::MINESWEEPER:
+            break;
     }
 
     // get the sprite here
@@ -21,9 +23,20 @@ Title::tile(int x, int y, TileType tile_type)
 int Tile::getX() const { return x };
 int Tile::getY() const { return y };
 TileType Tile::getType() const { return tile_type }
-bool isWalkable() const { return walkable };
-bool isVisible() const { return visible };
-bool isExplored() const { return expored };
+bool Tile::isWalkable() const { return walkable };
+bool Tile::isVisible() const { return visible };
+bool Tile::isExplored() const { return expored };
+void Tile::setSprite(sf::filesystem::path& filepath) const { 
+    sf::Texture texture;
+    if (!texture.loadFromFile(filepath)) {
+        std::cerr << "Error loading the Texture: " << filepath << std::endl;
+        return;
+    }
+    spirte = sf::Sprite(texture);
+}
+void Tile::draw_to(sf::RenderWindow& window) { 
+    spirte.setPosition(sf::Vector2i(x, y));
+    window.draw(sprite);
+ }; // add this more later
 
-void draw_to(sf::RenderWindow& window) {  }; // add this more later
-
+//std::filesystem::current_path() / "assets" / "minesweeper";
