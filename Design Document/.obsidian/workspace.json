@@ -6,7 +6,7 @@
       {
         "id": "fc46223c7b2321e2",
         "type": "tabs",
-        "dimension": 71.83770883054892,
+        "dimension": 78.16593886462883,
         "children": [
           {
             "id": "8471102ee79ff8dd",
@@ -163,6 +163,20 @@
             }
           },
           {
+            "id": "f56db7dc1a337c58",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Coding/Procedural-Generation-Algorithms.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Procedural-Generation-Algorithms"
+            }
+          },
+          {
             "id": "b7822d9f03af89ed",
             "type": "leaf",
             "state": {
@@ -177,12 +191,12 @@
             }
           }
         ],
-        "currentTab": 10
+        "currentTab": 11
       },
       {
         "id": "f22a9afef66a0f43",
         "type": "tabs",
-        "dimension": 28.162291169451073,
+        "dimension": 21.83406113537118,
         "children": [
           {
             "id": "0f16fdf1d822f605",
@@ -217,7 +231,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -254,7 +269,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "dcf76a2ad2d4617c",
@@ -339,12 +355,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "641c5ffcfd248ead",
+  "active": "f56db7dc1a337c58",
   "lastOpenFiles": [
-    "Source_Images/initial_project_structure.png",
-    "Coding/Procedural-Generation-Algorithms.md",
-    "Development Roadmap.md",
     "Structure.md",
+    "Coding/Procedural-Generation-Algorithms.md",
+    "Source_Images/initial_project_structure.png",
+    "Development Roadmap.md",
     "Introduction to Procedural Generation.md",
     "Coding/Technical-Tools.md",
     "Gampley/Core-Loop.md",
