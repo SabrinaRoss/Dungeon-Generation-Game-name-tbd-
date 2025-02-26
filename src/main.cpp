@@ -3,7 +3,7 @@
 #include <filesystem>
 #include "ui/main_menu.hpp"
 #include "core/game_state.hpp"
-
+#include "dungeon/dungeon_generator.h"
 
 int main() {
     sf::RenderWindow window;
@@ -29,9 +29,29 @@ int main() {
     // textbox1.setPosition({100,100});
     // textbox1.setLimit(true, 10);
     
+    int dungeonWidth = 80;
+    int dungeonHeight = 50;
+
+    DungeonGenerator* generator = new DungeonGenerator(dungeonWidth, dungeonHeight);
+    generator->generateDungeon();
+    std::vector<std::vector<Tile>>& dungeonTiles = generator->getTiles();
+
+    // Print the dungeon to console (for testing)
+    for (int y = 0; y < dungeonHeight; ++y) {
+        for (int x = 0; x < dungeonWidth; ++x) {
+            switch (dungeonTiles[y][x].getType()) {
+                case TileType::GROUND: std::cout << "."; break;
+                case TileType::WALL:   std::cout << "#"; break;
+                case TileType::VOID:   std::cout << " "; break; // Should ideally not see VOID after generation
+                default:              std::cout << "?"; break;
+            }
+        }
+        std::cout << std::endl;
+    }
+
     GameState game_state = GameState::START;
     MainMenu main_menu(window, font);
-    
+    delete generator;
     while (window.isOpen()) {
         sf::Event event;
         // if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) textbox1.setSelected(true);
@@ -44,6 +64,7 @@ int main() {
             main_menu.eventChecking(event, window, game_state);
             break;
         case GameState::PLAYING:
+            
             break;
         }
         //textbox1.drawTo(window);
