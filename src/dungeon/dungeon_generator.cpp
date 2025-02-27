@@ -54,11 +54,12 @@ void DungeonGenerator::generateRoom() {
     if (!isLeaf()) return;
     int min_wh { 5 }, wiggle_room { 2 }, min_xy { 1 };
     int rw = randomInt(min_wh, area.w - wiggle_room);
-    int rh = randomInt(min_wh, area.w - wiggle_room);
+    int rh = randomInt(min_wh, area.h - wiggle_room);
     int rx = area.x + randomInt(min_xy, area.w - rw);
     int ry = area.y + randomInt(min_xy, area.h - rh);
     room = {rx, ry, rw, rh};
     has_room = true;
+    std::cout << "Generated Room: x=" << rx << ", y=" << ry << ", w=" << rw << ", h=" << rh << std::endl;
 }
 DungeonGenerator::Rect DungeonGenerator::getRoom() const { return room; }
 void DungeonGenerator::connectRooms(DungeonGenerator* other) {
@@ -70,18 +71,20 @@ void DungeonGenerator::connectRooms(DungeonGenerator* other) {
     int y1 = room1.y + (room1.h / 2);
     int x2 = room2.x + (room2.w / 2);
     int y2 = room2.y + (room2.h / 2);
-    createBetweenRooms(x1, y2, x2, y2);
+    std::cout << "Connecting Rooms between: (" << x1 << "," << y1 << ") and (" << x2 << "," << y2 << ")" << std::endl; // Debug print
+    createBetweenRooms(x1, y1, x2, y2);
 }
 void DungeonGenerator::createBetweenRooms(int x1, int y1, int x2, int y2) {
     // note, change this later to make the corridors more wide so I can put minesweeper in them as well
     int x { x1 };
-    int y { x2 };
+    int y { y1 };
     while (x != x2 || y != y2) {
         if (x < x2) x++;
         else if (x > x2) x--;
         else if (y < y2) y++;
         else if (y > y2) y--;
         if (x >= 0 && x < width && y >= 0 && y < height) tiles[y][x].tile_type = TileType::GROUND;
+        std::cout << "Carving Corridor at: (" << x << "," << y << ")" << std::endl;
     } 
 }
 
@@ -109,12 +112,14 @@ void DungeonGenerator::carveRoomsAndCorridors() { // note for all methods, chang
     }
     carveRoomsRecursive();
     // carveCorridorsRecursive(); // this func might be irrelavent 
+    std::cout << "Finished carveRoomsAndCorridors()" << std::endl;
 }
 
 void DungeonGenerator::carveRoomsRecursive() {
+    std::cout << "Entering carveRoomsRecursive(), isLeaf=" << isLeaf() << ", has_room=" << has_room << std::endl;
     if (!isLeaf()) {
-        if (left) left->carveRoomsAndCorridors();
-        if (right) right->carveRoomsAndCorridors();
+        if (left) left->carveRoomsRecursive();
+        if (right) right->carveRoomsRecursive();
     } else if (has_room) {
         int x { room.x };
         int y { room.y };
@@ -125,6 +130,7 @@ void DungeonGenerator::carveRoomsRecursive() {
             }
         }
     }
+    std::cout << "Exiting carveRoomsRecursive(), isLeaf=" << isLeaf() << ", has_room=" << has_room << std::endl;
 }
 
 void DungeonGenerator::carveCorridorsRecursive() { // this func might be irrelavent
