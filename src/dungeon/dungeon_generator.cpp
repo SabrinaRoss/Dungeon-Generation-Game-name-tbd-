@@ -20,7 +20,12 @@ void DungeonGenerator::generateDungeon() {
     connectRoomsRecursive();
     carveRoomsAndCorridors();
 }
-int DungeonGenerator::randomInt(int min, int max) { return rand() % (max - min + 1) + min; }
+int DungeonGenerator::randomInt(int min, int max) { 
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> distrib(min, max);
+    return distrib(gen);
+ }
 bool DungeonGenerator::split(int min) {
     // this method splits the room into 2 smaller partitions
     float bias { 1.25 };

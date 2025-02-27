@@ -9,7 +9,7 @@ const int TILE_SIZE { 8 };
 
 class Player {
 public:
-    Player(int x = 0, int y = 0, int health = 1); also change the default positions and health later
+    Player(int x = 0, int y = 0, int health = 1); //also change the default positions and health later
     int getX() const;
     int getY() const;
     int getHealth() const;
@@ -22,6 +22,6 @@ private:
     int y;
     int health;
     sf::Sprite sprite;
-}
+};
 
 #endif

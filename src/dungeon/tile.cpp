@@ -34,7 +34,10 @@ bool Tile::isExplored() const { return explored; }
  //   sprite = sf::Sprite(texture);
 //}
 void Tile::drawTo(sf::RenderWindow& window) { 
-    sprite.setPosition(sf::Vector2i(x * TILE_SIZE, y * TILE_SIZE));
+    sf::Vector2i pixelPosition(x * TILE_SIZE, y * TILE_SIZE);
+    sf::Vector2f floatPosition(static_cast<float>(pixelPosition.x), static_cast<float>(pixelPosition.y));
+
+    sprite.setPosition(floatPosition);
     window.draw(sprite);
  } // add this more later
 

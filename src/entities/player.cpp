@@ -18,10 +18,12 @@ void Player::hit(int damage) {
 }
 void Player::setSprite(std::filesystem::path& filepath) {
     sf::Texture t;
-    if (!t.loadFromFile(filepath) ){ std::cerr << "Error loading the player texture: " << filepath << endl; return; }
-    sprite.setTexture(texture);
+    if (!t.loadFromFile(filepath) ){ std::cerr << "Error loading the player texture: " << filepath << std::endl; return; }
+    sprite.setTexture(t);
 }
 void Player::drawTo(sf::RenderWindow& window) {
-    sprite.setPosition(sf::Vector2i(x * TILE_SIZE, y * TILE_SIZE));
+    sf::Vector2i pixelPosition(x * TILE_SIZE, y * TILE_SIZE);
+    sf::Vector2f floatPosition(static_cast<float>(pixelPosition.x), static_cast<float>(pixelPosition.y));
+    sprite.setPosition(floatPosition);
     window.draw(sprite);
 }
