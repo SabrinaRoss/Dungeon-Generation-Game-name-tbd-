@@ -1,7 +1,4 @@
 #include "dungeon_generator.h"
-#include <cstdlib>
-#include <ctime>
-#include <algorithm>
 
 DungeonGenerator::DungeonGenerator(int width, int height)
     : area({0, 0, width, height}), width(width), height(height) {
@@ -11,10 +8,10 @@ DungeonGenerator::DungeonGenerator(int width, int height)
     int i { 0 };
     for (; i < height; i++) {
         tiles[i].resize(width, Tile(0, 0, TileType::VOID)); j = 0; //yes this is intentional, it is my personal project so I get the creative liberties for how I write code and what looks cool or not
-        for (; j < width, j++) tiles[i][j] = Tile[i][j] = Tile(j, i, TileType::VOID); // set this to diffrent when make the algorithm
+        for (; j < width; j++) tiles[i][j] = Tile(j, i, TileType::VOID); // set this to diffrent when make the algorithm
     }
 }
-~DungeonGenerator() { delete left; delete right; }
+DungeonGenerator::~DungeonGenerator() { delete left; delete right; }
 std::vector<std::vector<Tile>>& DungeonGenerator::getTiles() { return tiles; }
 bool DungeonGenerator::isLeaf() const { return left == nullptr && right == nullptr; }
 void DungeonGenerator::generateDungeon() {
@@ -34,7 +31,7 @@ bool DungeonGenerator::split(int min) {
     if (area.h > area.w * bias) split_hor = true;
     if (split_hor) {
         int split_point = randomInt(min, area.h - min);
-        if (split_point >= area.h - min || split_point < = min) return false;
+        if (split_point >= area.h - min || split_point <= min) return false;
         left = new DungeonGenerator(area.w, split_point);
         right = new DungeonGenerator(area.w, area.h - split_point);
         left->area = {area.x, area.y, area.w, split_point};
@@ -44,7 +41,7 @@ bool DungeonGenerator::split(int min) {
         if (split_point >= area.w - min || split_point <= min) return false;
         left = new DungeonGenerator(split_point, area.h);
         right = new DungeonGenerator(area.w - split_point, area.h);
-        left->area = {area.x. area.y, split_point, area.h};
+        left->area = {area.x, area.y, split_point, area.h};
         right->area = {area.x + split_point, area.y, area.w - split_point, area.h};
     } return true;
 }
@@ -53,9 +50,9 @@ void DungeonGenerator::generateRoom() {
     int min_wh { 5 }, wiggle_room { 2 }, min_xy { 1 };
     int rw = randomInt(min_wh, area.w - wiggle_room);
     int rh = randomInt(min_wh, area.w - wiggle_room);
-    int rx = area.x + randomInt(min_xy, area.h - rw);
+    int rx = area.x + randomInt(min_xy, area.w - rw);
     int ry = area.y + randomInt(min_xy, area.h - rh);
-    room = {rx, ry, rw, wh};
+    room = {rx, ry, rw, rh};
     has_room = true;
 }
 DungeonGenerator::Rect DungeonGenerator::getRoom() const { return room; }
@@ -83,14 +80,14 @@ void DungeonGenerator::createBetweenRooms(int x1, int y1, int x2, int y2) {
     } 
 }
 
-void generateRoomsRecursive() {
+void DungeonGenerator::generateRoomsRecursive() {
     if (!isLeaf()) {
         if (left) left->generateRoomsRecursive();
         if (right) right->generateRoomsRecursive();
     } else generateRoom();
 }
 
-void connectRoomsRecursive() {
+void DungeonGenerator::connectRoomsRecursive() {
     if (!isLeaf()) {
         if (left) left->connectRoomsRecursive();
         if (right) right->connectRoomsRecursive();
@@ -98,7 +95,7 @@ void connectRoomsRecursive() {
     } 
 }
 
-void carveRoomsAndCorridors() { // note for all methods, change from carve cause I do not like this name
+void DungeonGenerator::carveRoomsAndCorridors() { // note for all methods, change from carve cause I do not like this name
     int x { 0 };
     int y { 0 };
     for (; y < height; ++y) {
@@ -109,7 +106,7 @@ void carveRoomsAndCorridors() { // note for all methods, change from carve cause
     // carveCorridorsRecursive(); // this func might be irrelavent 
 }
 
-void carveRoomsRecursive() {
+void DungeonGenerator::carveRoomsRecursive() {
     if (!isLeaf()) {
         if (left) left->carveRoomsAndCorridors();
         if (right) right->carveRoomsAndCorridors();
@@ -118,16 +115,16 @@ void carveRoomsRecursive() {
         int y { room.y };
         for (; y < room.y + room.h; ++y) { //++y cause we do not want y as room.y value
             x = room.x; // for anyone reviewing the code and notice this, I am sorry I just think it looks cooler this way
-            for (x < room.x + room.w; ++x) { // ++x for the same reason
+            for (; x < room.x + room.w; ++x) { // ++x for the same reason
                 if (x >= 0 && x < width && y >= 0 && y < height) tiles[y][x].tile_type = TileType::GROUND;
             }
         }
     }
 }
 
-void carveCorridorsRecursive() { // this func might be irrelavent
+void DungeonGenerator::carveCorridorsRecursive() { // this func might be irrelavent
     if (!isLeaf()) {
         if (left) left->carveCorridorsRecursive();
-        if (right) right->carveCorridorRecursive();
+        if (right) right->carveCorridorsRecursive();
     } // perhaps add a else
 }

@@ -4,6 +4,7 @@
 #include "ui/main_menu.hpp"
 #include "core/game_state.hpp"
 #include "dungeon/dungeon_generator.h"
+#include "dungeon/tile.h"
 
 int main() {
     sf::RenderWindow window;
@@ -33,8 +34,8 @@ int main() {
     int dungeonHeight = 50;
 
     DungeonGenerator* generator = new DungeonGenerator(dungeonWidth, dungeonHeight);
-    generator->generateDungeon();
-    std::vector<std::vector<Tile>>& dungeonTiles = generator->getTiles();
+    generator->DungeonGenerator::generateDungeon();
+    std::vector<std::vector<Tile>>& dungeonTiles = generator->DungeonGenerator::getTiles();
 
     // Print the dungeon to console (for testing)
     for (int y = 0; y < dungeonHeight; ++y) {

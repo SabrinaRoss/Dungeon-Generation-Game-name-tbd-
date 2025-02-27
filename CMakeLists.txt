@@ -34,14 +34,16 @@ endif()
 set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
+file(GLOB_RECURSE SOURCE_FILES "${SOURCE_DIR}/*.cpp")
+message(STATUS "SOURCE_FILES: ${SOURCE_FILES}")
 # --- Create Executable ---
-add_executable(dpg_game ${SOURCE_DIR}/main.cpp)
+add_executable(dpg_game ${SOURCE_FILES}) 
 
 # --- Set Include Directories (for compilation) ---
 target_include_directories(dpg_game PUBLIC
     ${SFML_INCLUDE_DIRS}
     ${INCLUDE_DIR}
-    $(SOURCE_DIR)
+    ${SOURCE_DIR}
 )
 
 # --- Link Libraries ---

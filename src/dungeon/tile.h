@@ -8,7 +8,7 @@ enum TileType {
     GROUND,
     WALL,
     MINESWEEPER,
-    VOID,
+    VOID
 };
 
 const int TILE_SIZE { 8 };
@@ -22,12 +22,12 @@ public:
     bool isWalkable() const;
     bool isVisible() const;
     bool isExplored() const;
-    void setSprite(std::filesystem::path& filepath);
+ //   void setSprite(std::filesystem::path& filepath);
     void drawTo(sf::RenderWindow& window);
+    TileType tile_type;
 private:
     int x;
     int y;
-    TileType tile_type;
     bool walkable;
     bool visible; // is the tile showing up
     bool explored; 
